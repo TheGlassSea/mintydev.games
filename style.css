@@ -1,0 +1,13 @@
+body{
+background-color: black;
+font-family: sans-serif;
+color: white;
+font-size: 20px;
+
+}
+
+.games {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
