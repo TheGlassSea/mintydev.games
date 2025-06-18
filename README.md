@@ -1,0 +1,2 @@
+# mintydev.games
+The website
