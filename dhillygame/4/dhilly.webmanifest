@@ -1,7 +1,7 @@
 {
-    "name": "Dhilly Game 6 Remake",
-    "short_name": "Dhilly 6",
-    "description": "Dhilly Game 6 remade from the ground up - Homebrew Game Boy Color project",
+    "name": "Dhilly Game 4 Remake",
+    "short_name": "Dhilly 4",
+    "description": "Dhilly Game 4 Remake",
     "icons": [
   {
     "src": "icons/icon-144.png",
@@ -20,8 +20,8 @@
     "purpose": "maskable"
   }
 ],
-    "start_url": "/dhillygame/6/index.html",
-    "scope": "/dhillygame/6/",
+    "start_url": "/dhillygame/2/index.html",
+    "scope": "/dhillygame/2/",
     "display": "standalone",
     "theme_color": "#aebfcf",
     "background_color": "#aebfcf"

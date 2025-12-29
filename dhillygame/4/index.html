@@ -5,11 +5,60 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Dhill6</title>
-    <meta name="author" content="eve, stan, nizrab" />
-    <style type="text/css"> body { background-color:#undefined; }</style>
+    <title>Dhilly Game 4</title>
+    <meta name="author" content="eve" />
+    <style type="text/css"> body { background-color:#202850; }</style>
+    <link rel="manifest" href="dhilly.webmanifest" />
     
   </head>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/6/play/service-worker.js") // Path to your service worker file
+        .then((registration) => {
+          console.log("Service Worker registered with scope:", registration.scope);
+        })
+        .catch((error) => {
+          console.error("Service Worker registration failed:", error);
+        });
+    } else {
+      console.log("Service Workers are not supported in this browser.");
+    }
+  let deferredPrompt;
+
+  // Listen for the `beforeinstallprompt` event
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredPrompt = event; // Save the event for later
+    console.log("Install prompt triggered");
+
+    // Optionally, show a custom install button
+    const installButton = document.getElementById("install-button");
+    if (installButton) {
+      installButton.style.display = "block"; // Show the button
+      installButton.addEventListener("click", () => {
+        deferredPrompt.prompt(); // Show the native install prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the install prompt");
+          } else {
+            console.log("User dismissed the install prompt");
+          }
+          deferredPrompt = null; // Reset the prompt
+        });
+      });
+    }
+  });
+
+  // Hide the button if the app is already installed
+  window.addEventListener("appinstalled", () => {
+    console.log("PWA was installed");
+    const installButton = document.getElementById("install-button");
+    if (installButton) installButton.style.display = "none";
+  });
+
+  </script>
+  
   <body>
     <div id="game">
       <canvas id="mainCanvas" width="256" height="224">No Canvas Support</canvas>
@@ -27,8 +76,9 @@
       <div id="controller_a" class="roundBtn">A</div>
     </div>      
     <script>
-      const customControls = {}
+      const customControls = {"up":["ArrowUp","w"],"down":["ArrowDown","s"],"left":["ArrowLeft","a"],"right":["ArrowRight","d"],"a":["Alt","z","j"],"b":["Control","k","x"],"start":["Enter"],"select":["Shift"]}
     </script>
     <script src="binjgb.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/debugger.js"></script>
 </body>
